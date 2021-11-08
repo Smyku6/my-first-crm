@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/crm.iml" filepath="$PROJECT_DIR$/.idea/crm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../express/w03d02/.idea/w03d02.iml" filepath="$PROJECT_DIR$/../../express/w03d02/.idea/w03d02.iml" />
     </modules>
   </component>
 </project>

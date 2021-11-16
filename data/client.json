@@ -1,8 +1,1 @@
-[
-  {
-    "id": "78523247-30ae-4a10-8624-ee9fd5622e5a",
-    "name": "Test123",
-    "mail": "smyku6@gmail.com",
-    "jajco": "kupalnocka"
-  }
-]
+[{"id":"727091e4-798f-493c-9964-623f3f78de0d","name":"Zinedine Zidane","mail":"zinedine@zidane.com","nextContactAt":"2005-05-05","notes":"Hala Madrid"},{"id":"23f81e24-c151-4c9d-ac8b-c9d5095e6eff","name":"Robert Lewandowski","mail":"rl9@bayern.de","nextContactAt":"2022-12-11","notes":"Notes"},{"id":"492c78f6-782a-4507-9795-f1a7f7ddbe66","name":"Jan Kowalski","mail":"jankowalski@gmail.com","nextContactAt":"2021-12-24","notes":"Janusz z Biedronki"}]

@@ -1,0 +1,44 @@
+<div class="row text-center bg-secondary">
+    <h2>CLIENT LIST</h2>
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Notes</th>
+        <th scope="col">Next contact at</th>
+        <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each clients}}
+
+        <tr>
+            <th scope="row">{{inc @index}} </th>
+            <td><a href="/client/{{this.id}}">{{this.name}}</a></td>
+            <td><a href="mailto:{{this.mail}}" target="_blank">{{this.mail}}</a></td>
+            <td>{{this.notes}}</td>
+            <td>{{this.nextContactAt}}</td>
+            <td>
+                <div class="d-flex justify-content-center">
+                    <a href="/client/{{this.id}}">
+                        <button type="submit" class="btn btn-info">DETAILS</button>
+                    </a>
+                    <form method="POST" action="/client/{{this.id}}?_method=DELETE">
+                        <button type="submit" class="btn btn-warning">DELETE</button>
+                    </form>
+                </div>
+            </td>
+
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+    <form method="GET" action="/client/form/add">
+        <button type="submit" class="btn btn-primary add">Add new client</button>
+    </form>
+</div>

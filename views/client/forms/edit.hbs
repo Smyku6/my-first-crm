@@ -1,0 +1,40 @@
+<div class="row text-center bg-secondary">
+    <h2>You are editing: {{client.name}}</h2>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="w-50">
+        <form method="POST" action="/client/{{client.id}}?_method=PUT">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your name"
+                       value="{{client.name}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="mail" name="mail" placeholder="name@example.com"
+                       value="{{client.mail}}">
+            </div>
+            <div class="form-group">
+
+                <label for="notes">Notes</label>
+                <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Type your notes"
+                          value="{{client.notes}}">Notes</textarea>
+
+            </div>
+            <div class="form-group">
+                <label for="nextContactAt">Next contact at</label>
+                <input type="date" class="form-control" id="nextContactAt" name="nextContactAt"
+                       value="{{client.nextContactAt}}">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success add">Submit this EDIT</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{{> go-to-clients}}
+
+
+

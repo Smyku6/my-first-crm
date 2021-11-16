@@ -1,28 +1,42 @@
 const {readFile, writeFile} = require('fs').promises;
 const {join} = require('path');
 const {v4: uuid} = require('uuid');
+const {ClientRecord} = require("../records/clients-record");
+
 
 class Db {
     constructor(dbFileName) {
         this.dbFileName = join(__dirname, '../data', dbFileName);
         this._load();
-
-    }
+    };
 
     async _load() {
-        this._data = JSON.parse(await readFile(this.dbFileName, 'utf8'));
+        this._data = JSON.parse(await readFile(this.dbFileName, 'utf8')).map(client => new ClientRecord(client));
+    };
+
+    _save() {
+        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
     }
 
     create(obj) {
-        this._data.push({
-            id: uuid(),
+        const id = uuid();
+        console.log(this._data)
+        this._data.push(new ClientRecord({
+            id,
             ...obj,
-        });
-        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
+        }));
+
+        this._save();
+        console.log(this._data)
+        return id;
     }
 
     getAll() {
         return this._data;
+    }
+
+    getOne(id) {
+        return this._data.find(oneObj => oneObj.id === id);
     }
 
     update(id, newObj) {
@@ -32,28 +46,26 @@ class Db {
                     ...oneObj,
                     ...newObj,
                 }
-
             } else {
                 return oneObj;
             }
-        })
-        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
+        });
+        this._save();
     }
 
     delete(id) {
         this._data = this._data.filter(oneObj => oneObj.id !== id);
+        this._save(); //debounce
 
-        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
     }
-
 
 
 }
 
-const db = new Db('client.json');
+const clientsDb = new Db('client.json');
 
 
 module.exports = {
-    db,
+    clientsDb,
 }
 

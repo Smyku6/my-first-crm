@@ -1,0 +1,47 @@
+<div class="row text-center bg-secondary">
+    <h2>{{client.name}}</h2>
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Key:</th>
+        <th scope="col">Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Name:</th>
+        <td>{{client.name}}</td>
+    </tr>
+    <tr>
+        <th scope="row">Mail:</th>
+        <td><a href="mailto:{{client.mail}}" target="_blank">{{client.mail}}</a></td>
+    </tr>
+    {{#if client.notes}}
+        <tr>
+            <th scope="row">Notes:</th>
+            <td>{{client.notes}}</td>
+        </tr>
+    {{/if}}
+    <tr>
+        <th scope="row">Next contact at:</th>
+        <td>{{client.nextContactAt}}</td>
+
+    </tr>
+
+
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+    <form method="GET" action="/client/form/edit/{{client.id}}">
+        <button type="submit" class="btn btn-warning">Edit client</button>
+    </form>
+
+    <form method="POST" action="/client/{{client.id}}?_method=DELETE">
+        <button type="submit" class="btn btn-danger">Delete client</button>
+    </form>
+</div>
+
+{{> go-to-clients}}
+
